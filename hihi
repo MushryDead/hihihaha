@@ -1,0 +1,34 @@
+#include <vector>
+
+std::vector<int> increaseVector(std::vector<int> vec, int n) {
+  for (auto& element : vec) {
+    element += n;
+  }
+  return vec;
+}
+
+#include "gtest/gtest.h"
+
+TEST(IncreaseVectorTest, EmptyVector) {
+  std::vector<int> input = {};
+  int n = 5;
+  std::vector<int> expected = {};
+  std::vector<int> result = increaseVector(input, n);
+  ASSERT_EQ(result, expected);
+}
+
+TEST(IncreaseVectorTest, NonEmptyVector) {
+  std::vector<int> input = {1, 2, 3, 4, 5};
+  int n = 2;
+  std::vector<int> expected = {3, 4, 5, 6, 7};
+  std::vector<int> result = increaseVector(input, n);
+  ASSERT_EQ(result, expected);
+}
+
+TEST(IncreaseVectorTest, NegativeN) {
+  std::vector<int> input = {1, 2, 3, 4, 5};
+  int n = -2;
+  std::vector<int> expected = {-1, 0, 1, 2, 3};
+  std::vector<int> result = increaseVector(input, n);
+  ASSERT_EQ(result, expected);
+}
